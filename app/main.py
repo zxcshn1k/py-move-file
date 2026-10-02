@@ -13,14 +13,9 @@ def move_file(command: str) -> None:
         dest_file_path = dest_path
 
     if dir_path:
-        folders = dir_path.split("/")
-        current_dir = ""
-        for folder in folders:
-            if folder:
-                current_dir = os.path.join(current_dir, folder)
-                if not os.path.exists(current_dir):
-                    os.mkdir(current_dir)
+        os.makedirs(dir_path, exist_ok=True)
 
+    # Lettura è scrittura di u schedariu
     with open(src_path, "r") as src_file:
         content = src_file.read()
 
